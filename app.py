@@ -1,4 +1,3 @@
-app_code = """
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -43,18 +42,13 @@ if submit:
 
     # Prepare feature array
     features = np.array([[hour, is_peak_hour, is_weekend, is_holiday, origin_encoded, destination_encoded]])
-    features_scaled = scaler.transform(features)
+    
+    # Removed scaler transformation because scaler is no longer used
+    # features_scaled = scaler.transform(features)
 
     # Predict
-    prediction = model.predict(features_scaled)[0]
+    prediction = model.predict(features)[0]
 
     # Output
     st.subheader("Prediction Result")
     st.info(f"Estimated Ridership: *{int(prediction):,} passengers*")
-"""
-
-# Save to app.py
-with open("app.py", "w") as f:
-    f.write(app_code.strip())
-
-print("app.py has been created!")
