@@ -51,4 +51,4 @@ if submit:
 
     # Output
     st.subheader("Prediction Result")
-    st.info(f"Estimated Ridership: *{int(prediction):,} passengers*")
+    st.info(f"Estimated Ridership: *{int(prediction):,} ridership(s)*")
