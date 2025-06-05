@@ -1,4 +1,3 @@
-第三步：创建 app.py 文件（完整模板）
 import streamlit as st
 import pandas as pd
 import numpy as np
