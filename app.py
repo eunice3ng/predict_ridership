@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import joblib
 import datetime
+import xgboost as xgb
 
 # Load model
 model = joblib.load("model.pkl")
