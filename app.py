@@ -5,7 +5,7 @@ import joblib
 import datetime
 
 # Load model
-model = joblib.load("model.pkl")
+model = joblib.load("xgb_model.pkl")
 label_encoders = joblib.load("label_encoders.pkl")
 
 # Set page
