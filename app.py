@@ -4,7 +4,7 @@ import numpy as np
 import joblib
 
 # 载入模型与Scaler
-model = joblib.load("random_forest_model.pkl")
+model = joblib.load("model.pkl")
 # scaler = joblib.load("scaler.pkl")
 
 st.set_page_config(page_title="Komuter Ridership Predictor", layout="centered")
