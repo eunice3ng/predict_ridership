@@ -4,7 +4,6 @@ import numpy as np
 
 # Load the trained model and scaler
 model = joblib.load("model.pkl")
-scaler = joblib.load("scaler.pkl")
 
 # App title and description
 st.title("KTM Ridership Prediction")
@@ -29,7 +28,7 @@ if st.button("Predict Ridership"):
     input_data = np.array([[is_weekend, is_peak_hour, is_holiday, origin_encoded,destination_encoded]])
     
     # Scale the input
-    input_scaled = scaler.transform(input_data)
+    # input_scaled = scaler.transform(input_data)
 
     # Predict using the model
     predicted_ridership = model.predict(input_scaled)
