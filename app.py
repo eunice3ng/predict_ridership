@@ -6,7 +6,7 @@ import joblib
 
 # 载入模型与Scaler
 model = joblib.load("random_forest_model.pkl")
-scaler = joblib.load("scaler.pkl")
+# scaler = joblib.load("scaler.pkl")
 
 st.set_page_config(page_title="Komuter Ridership Predictor", layout="centered")
 
@@ -44,9 +44,9 @@ if submitted:
     ])
 
     # 标准化（如适用）
-    input_scaled = scaler.transform(input_data)
+    # input_scaled = scaler.transform(input_data)
 
     # 预测
-    prediction = model.predict(input_scaled)
+    prediction = model.predict(input_data)
 
     st.success(f"📈 Predicted Ridership: {int(prediction[0])} passengers")
