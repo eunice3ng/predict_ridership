@@ -3,6 +3,19 @@ import numpy as np
 import pandas as pd
 import joblib
 import datetime
+import gdown
+import os
+
+# Google Drive file IDs
+MODEL_FILE_ID = "14FqiZG16TxzsUEsj9QCH5xy2FTbjZ3_y"
+ENCODERS_FILE_ID = "1y_g0Gb3XpHW0G2p4jWum-WqFzwE1yGM0"
+
+# Download model files if they don't exist
+if not os.path.exists("best_model.pkl"):
+    gdown.download(f"https://drive.google.com/uc?id={MODEL_FILE_ID}", "best_model.pkl", quiet=False)
+
+if not os.path.exists("label_encoders.pkl"):
+    gdown.download(f"https://drive.google.com/uc?id={ENCODERS_FILE_ID}", "label_encoders.pkl", quiet=False)
 
 # Load model
 model = joblib.load("model.pkl")
