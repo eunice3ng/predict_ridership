@@ -5,6 +5,9 @@ import joblib
 import datetime
 import gdown
 import os
+import json
+from sklearn.preprocessing import LabelEncoder
+
 
 # Google Drive file IDs
 MODEL_FILE_ID = "14FqiZG16TxzsUEsj9QCH5xy2FTbjZ3_y"
