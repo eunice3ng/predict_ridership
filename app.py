@@ -17,6 +17,12 @@ if not os.path.exists("best_model.pkl"):
 if not os.path.exists("label_encoders.pkl"):
     gdown.download(f"https://drive.google.com/uc?id={ENCODERS_FILE_ID}", "label_encoders.pkl", quiet=False)
 
+try:
+    label_encoders = joblib.load("label_encoders.pkl")
+    print("Successfully loaded label_encoders")
+except Exception as e:
+    print("Error loading label_encoders:", e)
+
 # Load model
 model = joblib.load("best_model.pkl")
 label_encoders = joblib.load("label_encoders.pkl")
