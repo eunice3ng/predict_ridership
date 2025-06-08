@@ -8,24 +8,29 @@ import os
 
 # Google Drive file IDs
 MODEL_FILE_ID = "14FqiZG16TxzsUEsj9QCH5xy2FTbjZ3_y"
-ENCODERS_FILE_ID = "1y_g0Gb3XpHW0G2p4jWum-WqFzwE1yGM0"
+ENCODERS_FILE_ID = "1QhYvlNFxh6RBkJJ6Jf5KuUjY2_i-Yh-x"
 
 # Download model files if they don't exist
 if not os.path.exists("best_model.pkl"):
     gdown.download(f"https://drive.google.com/uc?id={MODEL_FILE_ID}", "best_model.pkl", quiet=False)
 
-if not os.path.exists("label_encoders.pkl"):
-    gdown.download(f"https://drive.google.com/uc?id={ENCODERS_FILE_ID}", "label_encoders.pkl", quiet=False)
-
-try:
-    label_encoders = joblib.load("label_encoders.pkl")
-    print("Successfully loaded label_encoders")
-except Exception as e:
-    print("Error loading label_encoders:", e)
+if not os.path.exists("label_encoders.json"):
+    gdown.download(f"https://drive.google.com/uc?id={ENCODERS_FILE_ID}", "label_encoders.json", quiet=False)
 
 # Load model
 model = joblib.load("best_model.pkl")
-label_encoders = joblib.load("label_encoders.pkl")
+
+with open("label_encoders.json", "r") as f:
+    label_encoder_data = json.load(f)
+
+label_encoders = {}
+for key, classes in label_encoder_data.items():
+    le = LabelEncoder()
+    le.classes_ = np.array(classes)
+    label_encoders[key] = le
+
+
+# label_encoders = joblib.load("label_encoders.pkl")
 
 # Set page
 st.set_page_config(page_title="Komuter Ridership Predictor", layout="centered")
